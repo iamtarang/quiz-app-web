@@ -1,44 +1,53 @@
 /* eslint-disable no-unused-vars */
-// import { Form } from 'react-hook-form';
+import React, { useState } from 'react';
 import { Form } from 'react-bootstrap';
-import { getAllCourses, useCourses } from '../services/apis';
 import { useQuery } from '@tanstack/react-query';
-
+import { getAllCourses } from '../services/apis';
+import SmallLoader from './SmallLoader';
 
 const CourseDD = () => {
+	const [course, setCourse] = useState('');
 
 	const {
-		status: courseStatus,
 		data: courseData,
 		isLoading: courseLoading,
-		error: courseError } = useQuery({
-			queryKey: ['courselist'],
-			queryFn: getAllCourses,
-			
-		});
+		isError: courseError
+	} = useQuery({
+		queryKey: ['courselist'],
+		queryFn: getAllCourses,
+	});
 
-		if(courseLoading){
-			return <></>
-		}
+	if (courseLoading) {
+		return <SmallLoader />;
+	}
 
+	if (courseError) {
+		return <div>Error: Unable to load courses</div>;
+	}
+
+	const courses = courseData?.data?.data || [];
 
 	return (
 		<>
-			<Form.Label>Select Course</Form.Label>
-			<Form.Select
-				aria-label="Default select example"
-				name='type'
-			// value={category}
-			// onChange={(e) => {
-			// 	getCategory()
-			// 	setCategory(parseInt(e.target.value))
-			// }}
-			// required
-			>
-				{/* {categoryItems} */}
-			</Form.Select>
+			<Form.Group>
+				{/* <Form.Label className='ms-1'>Select Course</Form.Label> */}
+				<Form.Select
+					aria-label="Select course"
+					name="course"
+					value={course}
+					onChange={(e) => setCourse(e.target.value)}
+					required
+				>
+					<option value="">Choose a course</option>
+					{courses.map((courseName) => (
+						<option key={courseName.id} value={courseName.id}>
+							{courseName.course_name}
+						</option>
+					))}
+				</Form.Select>
+			</Form.Group>
 		</>
-	)
-}
+	);
+};
 
-export default CourseDD
+export default CourseDD;

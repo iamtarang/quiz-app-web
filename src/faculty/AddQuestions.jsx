@@ -1,8 +1,18 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable no-unused-vars */
-import React from 'react'
-import { Button, Container, Form, Table } from 'react-bootstrap'
+import React, { useCallback } from 'react'
+import { Button, Container, Form, Image, Table } from 'react-bootstrap'
+import CustomTable from '../components/CustomTable'
+import { useDropzone } from 'react-dropzone'
 
 const AddQuestions = () => {
+
+
+	const onDrop = useCallback(acceptedFiles => {
+		
+	}, [])
+	const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
+
 	return (
 		<>
 			<main>
@@ -10,12 +20,22 @@ const AddQuestions = () => {
 					<div className="row justify-content-center">
 						<div className="col-lg-4">
 							<div className="card shadow-lg border-0 rounded-lg mt-5">
-								<div className="card-header"><h3 className="text-center font-weight-light my-4">Create Questions</h3></div>
+								<div className="card-header"><h3 className="text-center font-weight-light my-4">Add Questions</h3></div>
 								<div className="card-body">
 									<Form>
-										<div className="form-floating mb-3">
+										<div className="d-flex form-floating mb-3">
 											<Form.Control as={'textarea'} placeholder="Your Question" />
-											<Form.Label>Question</Form.Label>
+											<Form.Label>
+												Question
+											</Form.Label>
+											<div className='mx-1 p-2' {...getRootProps()}>
+												<input {...getInputProps()} />
+												{
+													isDragActive ?
+														<div className="card">Drag and Drop</div> :
+														<div className="card">Drag and Drop</div>
+												}
+											</div>
 										</div>
 										<div className="row mb-3">
 											<div className="col-md-6">
@@ -65,42 +85,12 @@ const AddQuestions = () => {
 						</div>
 						<div className="col-lg-8">
 							<div className="card shadow-lg border-0 rounded-lg mt-5">
-								<div className="card-header d-flex">
-									<h3 className="text-center font-weight-light my-4">Your Questions</h3>
-									<Button className='btn btn-md btn-success ms-auto my-3'>Submit Your Quiz</Button>
-								</div>
-								<div className="card-body">
-									<Table responsive>
-										<thead>
-											<tr>
-												<th>#</th>
-												{Array.from({ length: 5 }).map((_, index) => (
-													<th key={index}>Table heading</th>
-												))}
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<td>1</td>
-												{Array.from({ length: 5 }).map((_, index) => (
-													<td key={index}>Table cell {index}</td>
-												))}
-											</tr>
-											<tr>
-												<td>2</td>
-												{Array.from({ length: 5 }).map((_, index) => (
-													<td key={index}>Table cell {index}</td>
-												))}
-											</tr>
-											<tr>
-												<td>3</td>
-												{Array.from({ length: 5 }).map((_, index) => (
-													<td key={index}>Table cell {index}</td>
-												))}
-											</tr>
-										</tbody>
-									</Table>
-								</div>
+								{/* <CustomTable
+								TableTitle={TableTitle}
+								TableData={tables}
+								tableHooks={tableHooks}
+								COLUMN_DATA={QUIZZES}
+							/> */}
 							</div>
 						</div>
 					</div>

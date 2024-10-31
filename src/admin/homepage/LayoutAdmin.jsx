@@ -132,9 +132,9 @@ const LayoutAdmin = () => {
 													<div className="sb-nav-link-icon"><CiMemoPad size={18} /></div>
 													Results
 												</NavLink>
-												<NavLink to={"/dashboard/tbd"} className="nav-link">
+												<NavLink to={"/dashboard/add-questions"} className="nav-link">
 													<div className="sb-nav-link-icon"><CiStreamOn size={18} /></div>
-													TBD
+													Add Questions
 												</NavLink>
 											</>
 											:
