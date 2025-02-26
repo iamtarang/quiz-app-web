@@ -3,7 +3,7 @@ import axios from 'axios'
 
 //? Defining the base URL
 export const connection = axios.create({
-	baseURL: 'http://localhost:3000/api',
+	baseURL: 'https://quiz-app-backend-6do2.onrender.com/api',
 	headers:{
 		'Content-Type': 'application/json',
 		'Accept': 'application/json',

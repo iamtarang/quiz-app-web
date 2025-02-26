@@ -4,10 +4,7 @@ import { useRef, useMemo } from 'react';
 import { Col, Row, Card, Table, Button, Form, ButtonGroup, Dropdown, Container } from 'react-bootstrap';
 import { useTable, useGlobalFilter, useFilters, useSortBy, usePagination } from 'react-table'
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
-// import "jspdf-autotable";
 import { ThreeDots } from 'react-loader-spinner';
-// import { useReactToPrint } from 'react-to-print'
-// import GlobalFilter from '../services/react-table/GlobalFilter';
 
 const CustomTable = ({ TableData, tableHooks, COLUMN_DATA, TableTitle }) => {
 
@@ -92,14 +89,6 @@ const CustomTable = ({ TableData, tableHooks, COLUMN_DATA, TableTitle }) => {
 
 	const { pageIndex, pageSize } = state
 	// const { pageIndex, pageSize, globalFilter } = state
-
-	// const download = TableTitle?.props?.children === undefined ? "table.pdf" : TableTitle?.props?.children
-
-	// const exportPDF = useReactToPrint({
-	// 	content: () => currentRef.current,
-	// 	copyStyles: true
-	// })
-
 	return (
 		<>
 			<Card.Header>
@@ -136,9 +125,7 @@ const CustomTable = ({ TableData, tableHooks, COLUMN_DATA, TableTitle }) => {
 									{/* <Dropdown.Item href="#/action-2">Another action</Dropdown.Item> */}
 									<Dropdown.Divider />
 									<Dropdown.Item className='d-flex justify-content-center'>
-										{/* <Button onClick={() => exportPDF()}>
-											Export as PDF
-										</Button> */}
+										
 									</Dropdown.Item>
 								</Dropdown.Menu>
 							</Dropdown>
@@ -186,7 +173,7 @@ const CustomTable = ({ TableData, tableHooks, COLUMN_DATA, TableTitle }) => {
 								height="80"
 								width="80"
 								radius="9"
-								color="#4fa94d"
+								color="#0d6efd"
 								ariaLabel="three-dots-loading"
 								wrapperStyle={{}}
 								wrapperClassName=""

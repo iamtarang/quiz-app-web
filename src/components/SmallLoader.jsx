@@ -9,7 +9,7 @@ const SmallLoader = () => {
                 visible={true}
                 height="20"
                 width="20"
-                color="#4fa94d"
+                color="#0d6efd"
                 radius="9"
                 ariaLabel="three-dots-loading"
                 wrapperStyle={{}}

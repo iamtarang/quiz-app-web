@@ -3,11 +3,11 @@ import { useState } from "react";
 import { Button, Form } from "react-bootstrap"
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
-import { config, connection } from "./Auth";
+import { connection } from "./Auth";
 import useAuth from "./hooks/useAuth";
+import React from 'react'
 
-function Login() {
-
+const Login = () => {
 
 	const [email, setEmail] = useState("");
 	const [password, setPwd] = useState("");
